@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+<meta name="theme-color"
+content="#090512">
+<title>
+Physics 2nd Paper | DMRC Quiz 2026
+</title>
+<!-- ================= FONT ================= -->
+<link rel="preconnect"
+href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+<link rel="preconnect"
+href="[https://fonts.gstatic.com](https://fonts.gstatic.com)"
+crossorigin>
+<link href="[https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap)"
+rel="stylesheet">
+<style>
+/* =====================================================
+ROOT
+===================================================== */
+:root {
+--bg: #05030a;
+--bg-light: #10091b;
+--card: rgba(25, 15, 38, .76);
+--text: #ffffff;
+--muted: #a99bb7;
+--dim: #766783;
+--purple: #ae7aff;
+--violet: #744dff;
+--pink: #e57aff;
+--blue: #66b8ff;
+--border: rgba(255,255,255,.09);
+--glow: rgba(174,122,255,.16);
+}
+/* =====================================================
+RESET
+===================================================== */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+min-height: 100vh;
+padding: 35px 18px;
+overflow-x: hidden;
+color: var(--text);
+font-family:
+"Inter",
+"Hind Siliguri",
+sans-serif;
+background:
+radial-gradient(
+circle at 10% 0%,
+rgba(147,78,255,.17),
+transparent 30%
+),
+radial-gradient(
+circle at 90% 10%,
+rgba(224,93,255,.12),
+transparent 28%
+),
+radial-gradient(
+circle at 50% 100%,
+rgba(80,110,255,.10),
+transparent 35%
+),
+linear-gradient(
+135deg,
+#030207,
+#0c0616 50%,
+#040209
+);
+}
+/* =====================================================
+BACKGROUND GRID
+===================================================== */
+body::before {
+content: "";
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: -2;
+opacity: .22;
+background-image:
+linear-gradient(
+rgba(255,255,255,.025) 1px,
+transparent 1px
+),
+linear-gradient(
+90deg,
+rgba(255,255,255,.025) 1px,
+transparent 1px
+);
+background-size: 42px 42px;
+}
+/* =====================================================
+PAGE
+===================================================== */
+.page {
+width: min(1050px, 94%);
+margin: auto;
+}
+/* =====================================================
+MAIN CONTAINER
+===================================================== */
+.container {
+position: relative;
+overflow: hidden;
+border:
+1px solid
+var(--border);
+border-radius: 30px;
+background:
+linear-gradient(
+145deg,
+rgba(28,17,43,.86),
+rgba(5,3,11,.88)
+);
+box-shadow:
+0 40px 110px
+rgba(0,0,0,.58),
+inset 0 1px 0
+rgba(255,255,255,.065);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+}
+/* =====================================================
+TOP GLOW
+===================================================== */
+.top-glow {
+position: absolute;
+width: 480px;
+height: 480px;
+top: -350px;
+left: 50%;
+transform:
+translateX(-50%);
+border-radius: 50%;
+background:
+rgba(159,91,255,.12);
+filter: blur(100px);
+pointer-events: none;
+}
+/* =====================================================
+HEADER
+===================================================== */
+.header {
+position: relative;
+text-align: center;
+padding:
+48px 30px 36px;
+border-bottom:
+1px solid
+var(--border);
+}
+/* =====================================================
+BACK BUTTON
+===================================================== */
+.back {
+position: absolute;
+top: 27px;
+left: 28px;
+display: inline-flex;
+align-items: center;
+gap: 7px;
+padding:
+8px 15px;
+color: #a193ad;
+text-decoration: none;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 12px;
+border:
+1px solid
+rgba(255,255,255,.08);
+border-radius: 50px;
+background:
+rgba(255,255,255,.025);
+transition: .25s ease;
+}
+.back:hover {
+color: var(--purple);
+border-color:
+rgba(174,122,255,.35);
+background:
+rgba(174,122,255,.06);
+}
+/* =====================================================
+BADGE
+===================================================== */
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding:
+8px 18px;
+border:
+1px solid
+rgba(174,122,255,.25);
+border-radius: 50px;
+background:
+rgba(174,122,255,.06);
+color:
+var(--purple);
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.8px;
+}
+.badge-dot {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background:
+var(--purple);
+box-shadow:
+0 0 15px
+var(--purple);
+}
+/* =====================================================
+TITLE
+===================================================== */
+.title {
+margin-top: 20px;
+font-family:
+"Inter",
+"Hind Siliguri",
+sans-serif;
+font-size:
+clamp(30px, 5vw, 55px);
+font-weight: 800;
+line-height: 1.15;
+letter-spacing: -1.5px;
+background:
+linear-gradient(
+100deg,
+#ffffff 10%,
+#d6bdff 50%,
+#ffffff 90%
+);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.subtitle {
+margin-top: 10px;
+color:
+var(--muted);
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 17px;
+}
+/* =====================================================
+CONTENT
+===================================================== */
+.content {
+padding: 40px;
+}
+/* =====================================================
+INFO GRID
+===================================================== */
+.info-grid {
+display: grid;
+grid-template-columns:
+repeat(2, 1fr);
+gap: 17px;
+}
+/* =====================================================
+INFO CARD
+===================================================== */
+.info-card {
+position: relative;
+min-height: 132px;
+padding: 23px;
+overflow: hidden;
+border:
+1px solid
+var(--border);
+border-radius: 20px;
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.045),
+rgba(255,255,255,.012)
+);
+transition:
+transform .25s ease,
+border-color .25s ease;
+}
+.info-card:hover {
+transform:
+translateY(-4px);
+border-color:
+rgba(174,122,255,.30);
+}
+.info-card::before {
+content: "";
+position: absolute;
+width: 130px;
+height: 130px;
+top: -75px;
+right: -70px;
+border-radius: 50%;
+background:
+rgba(174,122,255,.06);
+filter: blur(8px);
+}
+/* =====================================================
+LABEL
+===================================================== */
+.label {
+position: relative;
+color:
+var(--dim);
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+}
+/* =====================================================
+VALUE
+===================================================== */
+.value {
+position: relative;
+margin-top: 10px;
+color:
+#faf6ff;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 25px;
+font-weight: 700;
+}
+.value.small {
+font-size: 20px;
+}
+/* =====================================================
+COUNTDOWN
+===================================================== */
+.countdown-section {
+margin-top: 25px;
+padding: 30px;
+border:
+1px solid
+rgba(174,122,255,.16);
+border-radius: 24px;
+background:
+radial-gradient(
+circle at 50% 0%,
+rgba(174,122,255,.09),
+transparent 48%
+),
+rgba(7,4,14,.58);
+}
+.countdown-title {
+margin-bottom: 20px;
+text-align: center;
+color:
+#a99aaf;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 16px;
+}
+/* =====================================================
+COUNTDOWN GRID
+===================================================== */
+.countdown {
+display: grid;
+grid-template-columns:
+repeat(4, 1fr);
+gap: 13px;
+}
+/* =====================================================
+TIME CARD
+===================================================== */
+.time-card {
+position: relative;
+padding:
+23px 10px;
+text-align: center;
+overflow: hidden;
+border:
+1px solid
+rgba(255,255,255,.075);
+border-radius: 18px;
+background:
+rgba(255,255,255,.025);
+}
+.time-card::before {
+content: "";
+position: absolute;
+width: 90px;
+height: 90px;
+top: -60px;
+left: 50%;
+transform:
+translateX(-50%);
+border-radius: 50%;
+background:
+rgba(174,122,255,.07);
+filter: blur(12px);
+}
+.number {
+position: relative;
+font-size:
+clamp(30px, 5vw, 50px);
+line-height: 1;
+font-weight: 800;
+color:
+#fbf9ff;
+text-shadow:
+0 0 25px
+rgba(174,122,255,.13);
+}
+.time-label {
+position: relative;
+margin-top: 9px;
+color:
+#766981;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 13px;
+}
+/* =====================================================
+COUNTDOWN STATUS
+===================================================== */
+.status {
+margin-top: 19px;
+text-align: center;
+color:
+#82748d;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 13px;
+}
+/* =====================================================
+SUGGESTION BUTTON
+===================================================== */
+.suggestion {
+margin-top: 26px;
+text-align: center;
+}
+.suggestion-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+min-width: 255px;
+padding:
+14px 26px;
+color:
+#f3eaff;
+text-decoration: none;
+font-family:
+"Hind Siliguri",
+sans-serif;
+font-size: 16px;
+font-weight: 700;
+border:
+1px solid
+rgba(174,122,255,.34);
+border-radius: 14px;
+background:
+linear-gradient(
+135deg,
+rgba(116,77,255,.18),
+rgba(229,122,255,.10)
+);
+box-shadow:
+0 12px 32px
+rgba(0,0,0,.25);
+transition: .28s ease;
+}
+.suggestion-btn:hover {
+transform:
+translateY(-4px);
+border-color:
+rgba(174,122,255,.68);
+box-shadow:
+0 18px 40px
+rgba(0,0,0,.32),
+0 0 30px
+rgba(174,122,255,.10);
+}
+/* =====================================================
+FOOTER
+===================================================== */
+.footer {
+position: relative;
+padding:
+35px 20px 38px;
+text-align: center;
+overflow: hidden;
+border-top:
+1px solid
+var(--border);
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.014),
+rgba(0,0,0,.15)
+);
+}
+.footer-glow {
+position: absolute;
+width: 360px;
+height: 100px;
+bottom: -80px;
+left: 50%;
+transform:
+translateX(-50%);
+background:
+rgba(158,91,255,.11);
+filter: blur(55px);
+}
+.developed {
+position: relative;
+color:
+#74667f;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+}
+.developer {
+position: relative;
+margin-top: 7px;
+font-size: 19px;
+font-weight: 800;
+letter-spacing: 1.5px;
+background:
+linear-gradient(
+90deg,
+#ffffff,
+#bf8bff,
+#ffffff
+);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.student-info {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 14px;
+color:
+#74687f;
+font-size: 11px;
+letter-spacing: 1px;
+}
+.separator {
+color:
+var(--purple);
+}
+.copyright {
+position: relative;
+margin-top: 14px;
+color:
+#4a3e54;
+font-size: 9px;
+letter-spacing: 1px;
+}
+/* =====================================================
+TABLET
+===================================================== */
+@media (max-width: 750px) {
+.content {
+padding: 28px;
+}
+}
+/* =====================================================
+MOBILE
+===================================================== */
+@media (max-width: 550px) {
+body {
+padding: 0;
+}
+.page {
+width: 100%;
+}
+.container {
+border-radius: 0;
+border-left: none;
+border-right: none;
+}
+.header {
+padding:
+78px 18px 31px;
+}
+.back {
+top: 17px;
+left: 17px;
+}
+.title {
+font-size: 31px;
+letter-spacing: -1px;
+}
+.subtitle {
+font-size: 14px;
+}
+.content {
+padding:
+18px 14px;
+}
+.info-grid {
+grid-template-columns: 1fr;
+gap: 10px;
+}
+.info-card {
+min-height: 105px;
+padding: 18px;
+}
+.value {
+font-size: 22px;
+}
+.countdown-section {
+padding:
+20px 12px;
+border-radius: 20px;
+}
+.countdown {
+gap: 7px;
+}
+.time-card {
+padding:
+17px 4px;
+border-radius: 14px;
+}
+.number {
+font-size: 27px;
+}
+.time-label {
+font-size: 11px;
+}
+.suggestion-btn {
+width: 100%;
+min-width: 0;
+}
+.developer {
+font-size: 16px;
+}
+}
+</style>
+</head>
+<body>
+<!-- =====================================================
+PAGE
+====================================================== -->
+<div class="page">
+<div class="container">
+<div class="top-glow"></div>
+<!-- =================================================
+HEADER
+================================================= -->
+<header class="header">
+<a href="index.html"
+class="back">
+← মূল রুটিন
+</a>
+<div class="badge">
+<span class="badge-dot"></span>
+PHYSICS • QUIZ 2026
+</div>
+<h1 class="title">
+Physics 2nd Paper
+</h1>
+<div class="subtitle">
+ড. মাহবুবুর রহমান মোল্লা কলেজ
+</div>
+</header>
+<!-- =================================================
+CONTENT
+================================================= -->
+<main class="content">
+<!-- =================================================
+BASIC INFORMATION
+================================================= -->
+<div class="info-grid">
+<!-- SUBJECT CODE -->
+<div class="info-card">
+<div class="label">
+SUBJECT CODE
+</div>
+<div class="value">
+১৭৫
+</div>
+</div>
+<!-- DATE -->
+<div class="info-card">
+<div class="label">
+DATE
+</div>
+<div class="value">
+৫ সেপ্টেম্বর ২০২৬
+</div>
+</div>
+<!-- DAY -->
+<div class="info-card">
+<div class="label">
+DAY
+</div>
+<div class="value">
+শনিবার
+</div>
+</div>
+<!-- TIME -->
+<div class="info-card">
+<div class="label">
+EXAM TIME
+</div>
+<div class="value small">
+সকাল ১০:০০ – দুপুর ১২:০০
+</div>
+</div>
+</div>
+<!-- =================================================
+COUNTDOWN
+================================================= -->
+<section class="countdown-section">
+<div class="countdown-title">
+⏳ পরীক্ষার সময় শুরু হতে বাকি
+</div>
+<div class="countdown">
+<!-- DAYS -->
+<div class="time-card">
+<div class="number"
+id="days">
+০০
+</div>
+<div class="time-label">
+দিন
+</div>
+</div>
+<!-- HOURS -->
+<div class="time-card">
+<div class="number"
+id="hours">
+০০
+</div>
+<div class="time-label">
+ঘণ্টা
+</div>
+</div>
+<!-- MINUTES -->
+<div class="time-card">
+<div class="number"
+id="minutes">
+০০
+</div>
+<div class="time-label">
+মিনিট
+</div>
+</div>
+<!-- SECONDS -->
+<div class="time-card">
+<div class="number"
+id="seconds">
+০০
+</div>
+<div class="time-label">
+সেকেন্ড
+</div>
+</div>
+</div>
+<div class="status"
+id="status">
+Countdown চলছে...
+</div>
+</section>
+<!-- =================================================
+SUGGESTION
+================================================= -->
+<div class="suggestion">
+<a href="physicssuggestion.html"
+class="suggestion-btn">
+<span>
+📖
+</span>
+সাজেশন দেখুন
+<span>
+→
+</span>
+</a>
+</div>
+</main>
+<!-- =================================================
+FOOTER
+================================================= -->
+<footer class="footer">
+<div class="footer-glow"></div>
+<div class="developed">
+DEVELOPED BY
+</div>
+<div class="developer">
+JOHIRUL ISLAM SAGOR
+</div>
+<div class="student-info">
+<span>
+ROLL - 2042
+</span>
+<span class="separator">
+•
+</span>
+<span>
+SECTION - D
+</span>
+<span class="separator">
+•
+</span>
+<span>
+DMRC
+</span>
+</div>
+<div class="copyright">
+© 2026 • DMRC QUIZ EXAMINATION
+</div>
+</footer>
+</div>
+</div>
+<!-- =====================================================
+JAVASCRIPT
+PHYSICS 2ND PAPER COUNTDOWN
+====================================================== -->
+<script>
+/* =====================================================
+EXAM DATE & TIME
+5 September 2026
+10:00 AM
+Bangladesh Time:
+UTC +06:00
+===================================================== */
+const examDate = new Date(
+"2026-09-05T10:00:00+06:00"
+);
+/* =====================================================
+BANGLA NUMBER CONVERTER
+===================================================== */
+function banglaNumber(number) {
+const digits = [
+"০",
+"১",
+"২",
+"৩",
+"৪",
+"৫",
+"৬",
+"৭",
+"৮",
+"৯"
+];
+return String(number)
+.padStart(2, "0")
+.replace(
+/\d/g,
+digit => digits[digit]
+);
+}
+/* =====================================================
+UPDATE COUNTDOWN
+===================================================== */
+function updateCountdown() {
+const now =
+new Date();
+const difference =
+examDate.getTime()
+-
+now.getTime();
+/* =================================================
+EXAM STARTED
+================================================= */
+if (difference <= 0) {
+document
+.getElementById("days")
+.textContent = "০০";
+document
+.getElementById("hours")
+.textContent = "০০";
+document
+.getElementById("minutes")
+.textContent = "০০";
+document
+.getElementById("seconds")
+.textContent = "০০";
+document
+.getElementById("status")
+.textContent =
+"পরীক্ষার সময় শুরু হয়েছে।";
+return;
+}
+/* =================================================
+TOTAL SECONDS
+================================================= */
+const totalSeconds =
+Math.floor(
+difference / 1000
+);
+/* =================================================
+DAYS
+================================================= */
+const days =
+Math.floor(
+totalSeconds / 86400
+);
+/* =================================================
+HOURS
+================================================= */
+const hours =
+Math.floor(
+(totalSeconds % 86400)
+/ 3600
+);
+/* =================================================
+MINUTES
+================================================= */
+const minutes =
+Math.floor(
+(totalSeconds % 3600)
+/ 60
+);
+/* =================================================
+SECONDS
+================================================= */
+const seconds =
+totalSeconds % 60;
+/* =================================================
+DISPLAY
+================================================= */
+document
+.getElementById("days")
+.textContent =
+banglaNumber(days);
+document
+.getElementById("hours")
+.textContent =
+banglaNumber(hours);
+document
+.getElementById("minutes")
+.textContent =
+banglaNumber(minutes);
+document
+.getElementById("seconds")
+.textContent =
+banglaNumber(seconds);
+}
+/* =====================================================
+INITIAL UPDATE
+===================================================== */
+updateCountdown();
+/* =====================================================
+UPDATE EVERY SECOND
+===================================================== */
+setInterval(
+updateCountdown,
+1000
+);
+</script>
+</body>
+</html>
