@@ -1,1215 +1,3490 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="theme-color" content="#07111f">
-
-    <title>
-        DMRC | কুইজ পরীক্ষা - ২০২৬ | রুটিন
-    </title>
-
-    <!-- Google Font -->
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-
-    <style>
-
-        /* =========================================
-           GLOBAL
-        ========================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-
-            font-family:
-                "Hind Siliguri",
-                "Noto Sans Bengali",
-                sans-serif;
-
-            color: #ffffff;
-
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(0, 200, 255, 0.18),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 90% 15%,
-                    rgba(124, 92, 255, 0.18),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 50% 100%,
-                    rgba(0, 170, 255, 0.10),
-                    transparent 35%
-                ),
-
-                linear-gradient(
-                    135deg,
-                    #030711,
-                    #07111f,
-                    #0a1628
-                );
-
-            padding: 25px 15px;
-
-            overflow-x: hidden;
-        }
-
-
-        /* Background Grid */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            opacity: 0.25;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                );
-
-            background-size: 35px 35px;
-
-            z-index: -1;
-        }
-
-
-        /* =========================================
-           MAIN CONTAINER
-        ========================================= */
-
-        .container {
-
-            width: 100%;
-
-            max-width: 1100px;
-
-            margin: auto;
-
-            background:
-                rgba(10, 23, 39, 0.72);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.10);
-
-            border-radius: 28px;
-
-            overflow: hidden;
-
-            box-shadow:
-
-                0 30px 80px
-                rgba(0,0,0,0.45),
-
-                inset 0 1px 0
-                rgba(255,255,255,0.08);
-
-            backdrop-filter: blur(20px);
-
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-
-        /* =========================================
-           HEADER
-        ========================================= */
-
-        .header {
-
-            text-align: center;
-
-            padding:
-                45px
-                25px
-                35px;
-
-            position: relative;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.09);
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.04),
-                    transparent
-                );
-        }
-
-
-        /* Top Badge */
-
-        .badge {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            padding:
-                7px
-                16px;
-
-            border-radius: 50px;
-
-            font-size: 13px;
-
-            font-weight: 600;
-
-            letter-spacing: 1px;
-
-            color: #66ddff;
-
-            border:
-                1px solid
-                rgba(102,221,255,0.25);
-
-            background:
-                rgba(102,221,255,0.07);
-
-            box-shadow:
-                0 0 25px
-                rgba(102,221,255,0.06);
-        }
-
-
-        .badge-dot {
-
-            width: 7px;
-
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: #66ddff;
-
-            box-shadow:
-                0 0 12px
-                #66ddff;
-        }
-
-
-        /* College Name */
-
-        .college-name {
-
-            margin-top: 20px;
-
-            font-size:
-                clamp(
-                    25px,
-                    5vw,
-                    48px
-                );
-
-            line-height: 1.2;
-
-            font-weight: 800;
-
-            letter-spacing: -1px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #d9f7ff,
-                    #ffffff
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-        }
-
-
-        /* Exam Name */
-
-        .exam-name {
-
-            margin-top: 8px;
-
-            font-size:
-                clamp(
-                    20px,
-                    3vw,
-                    30px
-                );
-
-            font-weight: 700;
-
-            color: #cfe7f5;
-        }
-
-
-        /* Class */
-
-        .class-info {
-
-            margin-top: 8px;
-
-            color: #9fb3c8;
-
-            font-size: 17px;
-
-            font-weight: 500;
-        }
-
-
-        /* Header Glow */
-
-        .header::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-
-            height: 180px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(70,210,255,0.08);
-
-            filter: blur(50px);
-
-            top: -100px;
-
-            right: -50px;
-
-            pointer-events: none;
-        }
-
-
-        /* =========================================
-           CONTENT
-        ========================================= */
-
-        .content {
-
-            padding: 30px;
-        }
-
-
-        .section-title {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            margin-bottom: 22px;
-        }
-
-
-        .section-title h2 {
-
-            font-size: 24px;
-
-            font-weight: 700;
-
-            color: #f4f9ff;
-        }
-
-
-        .section-title span {
-
-            color: #8297ad;
-
-            font-size: 13px;
-        }
-
-
-        /* =========================================
-           SUBJECT GRID
-        ========================================= */
-
-        .subject-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-
-        /* =========================================
-           SUBJECT CARD
-           Ratio = 4:3
-        ========================================= */
-
-        .subject-card {
-
-            position: relative;
-
-            aspect-ratio: 4 / 3;
-
-            text-decoration: none;
-
-            color: white;
-
-            border-radius: 21px;
-
-            overflow: hidden;
-
-            padding: 20px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.10);
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.065),
-                    rgba(255,255,255,0.018)
-                );
-
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
-        }
-
-
-        /* Card Shine */
-
-        .subject-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 150px;
-
-            height: 150px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(78,215,255,0.08);
-
-            right: -70px;
-
-            top: -70px;
-
-            transition:
-                transform 0.3s ease;
-        }
-
-
-        .subject-card::after {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    120deg,
-                    transparent 35%,
-                    rgba(255,255,255,0.05),
-                    transparent 65%
-                );
-
-            transform:
-                translateX(-120%);
-
-            transition:
-                transform 0.6s ease;
-
-            pointer-events: none;
-        }
-
-
-        .subject-card:hover {
-
-            transform:
-                translateY(-7px);
-
-            border-color:
-                rgba(80,220,255,0.45);
-
-            box-shadow:
-
-                0 20px 40px
-                rgba(0,0,0,0.35),
-
-                0 0 25px
-                rgba(80,220,255,0.07);
-        }
-
-
-        .subject-card:hover::before {
-
-            transform:
-                scale(1.3);
-        }
-
-
-        .subject-card:hover::after {
-
-            transform:
-                translateX(120%);
-        }
-
-
-        /* Card Top */
-
-        .card-top {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        .card-number {
-
-            width: 34px;
-
-            height: 34px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 10px;
-
-            color: #70dcff;
-
-            background:
-                rgba(70,210,255,0.08);
-
-            border:
-                1px solid
-                rgba(70,210,255,0.15);
-
-            font-size: 13px;
-
-            font-weight: 700;
-        }
-
-
-        .quiz-label {
-
-            font-size: 11px;
-
-            color: #71869b;
-
-            letter-spacing: 1px;
-
-            font-weight: 600;
-        }
-
-
-        /* Subject Name */
-
-        .subject-name {
-
-            font-size:
-                clamp(
-                    16px,
-                    2vw,
-                    21px
-                );
-
-            line-height: 1.45;
-
-            font-weight: 700;
-
-            color: #f2f7fb;
-        }
-
-
-        /* Card Bottom */
-
-        .card-bottom {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        .subject-code {
-
-            color: #8499ad;
-
-            font-size: 13px;
-        }
-
-
-        .arrow {
-
-            width: 34px;
-
-            height: 34px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 50%;
-
-            color: #70dcff;
-
-            background:
-                rgba(70,210,255,0.07);
-
-            border:
-                1px solid
-                rgba(70,210,255,0.13);
-
-            font-size: 17px;
-
-            transition:
-                transform 0.25s ease;
-        }
-
-
-        .subject-card:hover .arrow {
-
-            transform:
-                translate(3px,-3px);
-        }
-
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        .footer {
-
-            text-align: center;
-
-            padding:
-                25px
-                20px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.08);
-
-            color: #7f94a8;
-
-            font-size: 14px;
-
-            line-height: 1.8;
-        }
-
-
-        .footer strong {
-
-            color: #d9e9f5;
-
-            font-weight: 700;
-        }
-
-
-        .footer .roll {
-
-            font-size: 12px;
-
-            color: #61778c;
-        }
-
-
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
-
-        @media (max-width: 850px) {
-
-            .subject-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-        }
-
-
-        @media (max-width: 550px) {
-
-            body {
-
-                padding: 10px;
-            }
-
-
-            .container {
-
-                border-radius: 20px;
-            }
-
-
-            .header {
-
-                padding:
-                    32px
-                    15px
-                    28px;
-            }
-
-
-            .content {
-
-                padding: 18px;
-            }
-
-
-            .subject-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                gap: 10px;
-            }
-
-
-            .subject-card {
-
-                padding: 13px;
-
-                border-radius: 16px;
-            }
-
-
-            .subject-name {
-
-                font-size: 15px;
-            }
-
-
-            .card-number {
-
-                width: 28px;
-
-                height: 28px;
-
-                font-size: 11px;
-            }
-
-
-            .quiz-label {
-
-                font-size: 8px;
-            }
-
-
-            .subject-code {
-
-                font-size: 10px;
-            }
-
-
-            .arrow {
-
-                width: 28px;
-
-                height: 28px;
-
-                font-size: 14px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f3ea">
+
+<title>সাজেশন | DMRC Quiz 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+
+<script>
+/* একটাই থিম (ক্রিম) — আগের সেভ করা থিম থাকলে মুছে ফেলা হচ্ছে */
+try{ localStorage.removeItem("dmrc_theme"); }catch(e){}
+</script>
+
+
+<style>
+/* =========================================================
+   DESIGN TOKENS — ক্লিন প্রিমিয়াম আইভরি থিম
+   রঙ বদলাতে চাইলে শুধু এই অংশ বদলান
+========================================================= */
+
+:root{
+    --bg:#f7f3ea;
+    --card:#fffdf8;
+    --line:rgba(30,24,16,.09);
+    --line-strong:rgba(30,24,16,.16);
+    --border:var(--line);
+
+    --ink:#1d1a16;
+    --soft:#6e655a;
+
+    --primary:#1b2a47;
+    --primary-ink:#ffffff;
+    --gold:#a67c2e;
+    --gold-soft:rgba(166,124,46,.12);
+    --danger:#a8342c;
+
+    /* compatibility aliases */
+    --c-navy:var(--primary);
+    --c-burgundy:var(--primary);
+    --c-emerald:var(--primary);
+    --c-plum:var(--gold);
+    --c-petrol:var(--soft);
+    --c-gold:var(--gold);
+    --accent:var(--gold);
+    --heading:var(--primary);
+    --sub-heading:var(--soft);
+    --text:var(--ink);
+    --muted:var(--soft);
+
+    --font-sans:"Hind Siliguri",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-serif:"Noto Serif Bengali","Hind Siliguri",Georgia,serif;
+
+    --radius:18px;
+    --radius-sm:12px;
+    --shadow-sm:0 1px 2px rgba(30,24,16,.04);
+    --shadow:0 1px 2px rgba(30,24,16,.04), 0 6px 20px -6px rgba(30,24,16,.08);
+    --shadow-lg:0 2px 4px rgba(30,24,16,.04), 0 18px 40px -12px rgba(30,24,16,.16);
+    --ring:0 0 0 3px rgba(166,124,46,.22);
+}
+
+/* BASE */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+body{
+    min-height:100vh;
+    font-family:var(--font-sans);
+    font-size:16px;
+    line-height:1.65;
+    color:var(--ink);
+    background:
+        radial-gradient(1200px 500px at 50% -200px, rgba(166,124,46,.10), transparent 70%),
+        var(--bg);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+
+::selection{background:var(--gold-soft);color:var(--primary);}
+
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;}
+
+:focus-visible{outline:none;box-shadow:var(--ring);}
+
+/* LAYOUT */
+
+.page{width:min(880px,100%);margin:0 auto;padding:24px 20px 40px;}
+
+.container{display:flex;flex-direction:column;min-height:calc(100vh - 64px);}
+
+/* HEADER */
+
+.app-header{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:4px;
+    min-height:100vh;
+    min-height:100svh;
+    padding:56px 0 72px;
+    margin-bottom:32px;
+    border-bottom:1px solid var(--line-strong);
+    text-align:left;
+    isolation:isolate;
+}
+
+.app-header::before{
+    content:"";
+    position:absolute;
+    top:-40px;
+    bottom:0;
+    left:50%;
+    width:100vw;
+    transform:translateX(-50%);
+    z-index:-1;
+    background:
+        linear-gradient(90deg, rgba(250,247,240,.96) 0%, rgba(250,247,240,.86) 38%, rgba(250,247,240,.35) 75%, rgba(250,247,240,.15) 100%),
+        url("image.jpg") center/cover no-repeat;
+}
+
+.scroll-hint{
+    position:absolute;
+    left:0;
+    bottom:24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--soft);
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.06em;
+}
+
+.scroll-hint::before{
+    content:"";
+    width:1px;
+    height:28px;
+    background:linear-gradient(var(--gold), transparent);
+    animation:hintDrop 1.8s ease-in-out infinite;
+}
+
+@keyframes hintDrop{
+    0%,100%{transform:translateY(-4px);opacity:.4;}
+    50%{transform:translateY(4px);opacity:1;}
+}
+
+.admin-trigger-btn{
+    display:none;
+    position:absolute;
+    top:0;
+    right:0;
+    padding:8px 14px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    background:var(--card);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:var(--shadow-sm);
+    transition:border-color .2s, background .2s;
+}
+
+.admin-trigger-btn:hover{border-color:var(--gold);background:#fff;}
+
+.badge-top{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 14px;
+    border:1px solid rgba(166,124,46,.28);
+    border-radius:999px;
+    background:rgba(255,253,248,.7);
+    color:var(--gold);
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+
+.badge-top span{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 3px rgba(166,124,46,.18);
+}
+
+.super-sub-header{margin-top:12px;color:var(--soft);font-size:13px;font-weight:600;}
+
+.college-title{
+    margin-top:2px;
+    max-width:none;
+    color:var(--primary);
+    font-family:var(--font-serif);
+    font-size:clamp(30px,7vw,56px);
+    font-weight:700;
+    line-height:1.15;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+}
+
+.exam-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:4px;
+    color:var(--gold);
+    font-size:clamp(15px,2.4vw,17px);
+    font-weight:700;
+}
+
+.exam-title::after{content:"";width:28px;height:1px;background:currentColor;opacity:.5;}
+
+.class-info{
+    display:inline-block;
+    margin-top:18px;
+    padding:7px 16px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--card);
+    color:var(--ink);
+    font-size:13.5px;
+    font-weight:600;
+    box-shadow:var(--shadow-sm);
+}
+
+/* NOTICE */
+
+.notice-banner{
+    display:none;
+    margin-bottom:28px;
+    padding:14px 18px;
+    border:1px solid rgba(166,124,46,.25);
+    border-left:3px solid var(--gold);
+    border-radius:var(--radius-sm);
+    background:linear-gradient(90deg, rgba(166,124,46,.08), rgba(166,124,46,.03));
+    color:var(--ink);
+    font-size:14.5px;
+    line-height:1.6;
+}
+
+.notice-banner strong{margin-right:4px;color:var(--primary);}
+
+/* SECTION */
+
+.content{flex:1;}
+
+.subject-section{
+    position:sticky;
+    top:0;
+    z-index:20;
+    margin:0 -20px 22px;
+    padding:14px 20px;
+    background:rgba(247,243,234,.86);
+    backdrop-filter:saturate(1.4) blur(10px);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+}
+
+.section-top{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:14px;
+    margin-bottom:14px;
+}
+
+.section-title{
+    color:var(--primary);
+    font-family:var(--font-serif);
+    font-size:21px;
+    font-weight:700;
+    line-height:1.3;
+}
+
+.section-description{margin-top:2px;color:var(--soft);font-size:14px;}
+
+.total-count{
+    flex:none;
+    padding:5px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--card);
+    color:var(--primary);
+    font-size:12.5px;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+}
+
+/* TABS */
+
+.subject-tabs{display:flex;flex-wrap:wrap;gap:8px;}
+
+.subject-tab{
+    padding:8px 16px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    background:var(--card);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:14.5px;
+    font-weight:600;
+    line-height:1.4;
+    white-space:nowrap;
+    cursor:pointer;
+    transition:background .2s, border-color .2s, color .2s;
+}
+
+.subject-tab:hover{border-color:var(--primary);}
+
+.subject-tab.active{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:var(--primary-ink);
+    box-shadow:0 4px 12px -4px rgba(27,42,71,.45);
+}
+
+/* CARDS */
+
+.suggestion-list{display:flex;flex-direction:column;align-items:center;gap:16px;}
+
+.suggestion-card{
+    position:relative;
+    width:100%;
+    max-width:100%;
+    padding:28px 32px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    animation:cardIn .35s ease both;
+}
+
+.suggestion-card:hover{
+    transform:translateY(-2px);
+    border-color:var(--line-strong);
+    box-shadow:var(--shadow-lg);
+}
+
+@keyframes cardIn{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:none;}
+}
+
+.card-subject{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+    color:var(--gold);
+    font-size:clamp(17px,2.6vw,20px);
+    font-weight:700;
+    line-height:1.3;
+}
+
+.card-subject::before{
+    content:"";
+    flex:none;
+    width:4px;
+    height:1.1em;
+    border-radius:4px;
+    background:var(--gold);
+}
+
+.card-top-title{
+    margin-bottom:14px;
+    color:var(--primary);
+    font-family:var(--font-serif);
+    font-size:clamp(22px,4vw,30px);
+    font-weight:700;
+    line-height:1.35;
+}
+
+.card-super-sub{
+    margin-bottom:4px;
+    color:var(--gold);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.03em;
+}
+
+.card-sub-head{margin-bottom:8px;color:var(--soft);font-size:15px;font-weight:600;}
+
+.suggestion-card h3{
+    margin-bottom:10px;
+    color:var(--primary);
+    font-size:clamp(18px,2.8vw,21px);
+    font-weight:700;
+    line-height:1.45;
+}
+
+.card-content-wrap{display:flex;flex-direction:column;justify-content:center;}
+
+.card-content-wrap p{color:var(--ink);font-size:16.5px;line-height:1.95;}
+
+.card-top-title,
+.card-super-sub,
+.card-sub-head,
+.suggestion-card h3,
+.card-content-wrap p{white-space:pre-wrap;overflow-wrap:anywhere;}
+
+.align-left{text-align:left;}
+.align-center{text-align:center;}
+.align-right{text-align:right;}
+
+.card-meta-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+}
+
+.marks-badge{
+    padding:6px 14px;
+    border-radius:999px;
+    background:var(--gold-soft);
+    color:#7a5a1e;
+    font-size:13px;
+    font-weight:700;
+}
+
+.signature-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-left:auto;
+    padding:9px 18px;
+    border-radius:999px;
+    background:var(--primary);
+    color:var(--primary-ink);
+    font-size:13.5px;
+    font-weight:600;
+    text-decoration:none;
+    transition:background .2s, transform .2s;
+}
+
+a.signature-btn:hover{background:#24365a;transform:translateY(-1px);}
+
+/* EMPTY */
+
+.no-data{
+    width:100%;
+    padding:56px 24px;
+    border:1px dashed var(--line-strong);
+    border-radius:var(--radius);
+    background:rgba(255,253,248,.6);
+    color:var(--soft);
+    font-size:15px;
+    text-align:center;
+}
+
+.empty-icon{margin-bottom:10px;font-size:28px;opacity:.85;}
+
+/* FOOTER */
+
+.footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    color:var(--soft);
+    font-size:13.5px;
+    line-height:1.8;
+    text-align:center;
+}
+
+.dev-name{color:var(--primary);font-weight:700;letter-spacing:.02em;}
+
+.footer .details{font-size:11.5px;letter-spacing:.08em;}
+
+.footer .copy{margin-top:2px;font-size:11px;letter-spacing:.06em;opacity:.75;}
+
+/* MODALS */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    padding:20px;
+    align-items:center;
+    justify-content:center;
+    background:rgba(20,16,10,.45);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+}
+
+.modal-content{
+    width:min(540px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:var(--card);
+    color:var(--ink);
+    box-shadow:0 30px 70px -20px rgba(20,16,10,.4);
+    animation:modalIn .22s ease;
+}
+
+@keyframes modalIn{
+    from{opacity:0;transform:translateY(12px) scale(.98);}
+    to{opacity:1;transform:none;}
+}
+
+.modal-title{
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+    color:var(--primary);
+    font-family:var(--font-serif);
+    font-size:20px;
+    font-weight:700;
+}
+
+.form-group{margin-bottom:14px;}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    color:var(--ink);
+    font-size:13.5px;
+    font-weight:600;
+}
+
+.form-control{
+    width:100%;
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius-sm);
+    outline:none;
+    background:#fff;
+    color:var(--ink);
+    font-family:inherit;
+    font-size:15px;
+    transition:border-color .2s, box-shadow .2s;
+}
+
+.form-control:focus{border-color:var(--gold);box-shadow:var(--ring);}
+
+textarea.form-control{min-height:100px;resize:vertical;line-height:1.7;}
+
+.btn-group{display:flex;gap:10px;margin-top:22px;}
+
+.btn{
+    flex:1;
+    min-height:44px;
+    padding:11px;
+    border:1px solid transparent;
+    border-radius:var(--radius-sm);
+    font-family:inherit;
+    font-size:14.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s, filter .2s, border-color .2s;
+}
+
+.btn:hover{filter:brightness(1.08);}
+
+.btn-primary{background:var(--primary);color:var(--primary-ink);}
+
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--line-strong);}
+
+.btn-secondary:hover{background:rgba(30,24,16,.04);filter:none;}
+
+.btn-danger{background:var(--danger);color:#fff;}
+
+.menu-options{display:flex;flex-direction:column;gap:8px;}
+
+.menu-option-btn{
+    width:100%;
+    min-height:48px;
+    padding:12px 16px;
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    background:#fff;
+    color:var(--ink);
+    font-family:inherit;
+    font-size:15px;
+    font-weight:600;
+    text-align:left;
+    cursor:pointer;
+    transition:border-color .2s, background .2s, transform .2s;
+}
+
+.menu-option-btn:hover{
+    border-color:var(--gold);
+    background:rgba(166,124,46,.05);
+    transform:translateX(2px);
+}
+
+.delete-item-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:8px;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    background:#fff;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:640px){
+
+    .page{padding:14px 16px 28px;}
+
+    .app-header{padding:56px 0 72px;margin-bottom:24px;}
+
+    .app-header::before{
+        background:
+            linear-gradient(180deg, rgba(250,247,240,.82) 0%, rgba(250,247,240,.9) 100%),
+            url("image.jpg") 70% center/cover no-repeat;
+    }
+
+    .admin-trigger-btn{top:12px;padding:7px 12px;font-size:12px;}
+
+    .badge-top{font-size:10.5px;letter-spacing:.1em;}
+
+    .exam-title::after{width:20px;}
+
+    .subject-section{margin:0 -16px 18px;padding:12px 16px;}
+
+    .section-top{align-items:center;margin-bottom:12px;}
+
+    .section-title{font-size:18px;}
+
+    .section-description{display:none;}
+
+    .subject-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        margin:0 -16px;
+        padding:2px 16px 4px;
+        scroll-snap-type:x proximity;
+        scrollbar-width:none;
+        -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+                mask-image:linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    }
+
+    .subject-tabs::-webkit-scrollbar{display:none;}
+
+    .subject-tab{flex:none;scroll-snap-align:start;font-size:14px;}
+
+    .suggestion-card{width:100% !important;padding:20px 18px;border-radius:16px;}
+
+    .suggestion-card:hover{transform:none;}
+
+    .card-content-wrap p{font-size:16px;line-height:1.9;}
+
+    .signature-btn{margin-left:0;}
+
+    .modal{align-items:flex-end;padding:0;}
+
+    .modal-content{
+        width:100%;
+        max-height:92vh;
+        padding:22px 18px calc(22px + env(safe-area-inset-bottom));
+        border-radius:22px 22px 0 0;
+        animation:sheetIn .25s ease;
+    }
+
+    @keyframes sheetIn{
+        from{transform:translateY(24px);opacity:0;}
+        to{transform:none;opacity:1;}
+    }
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
+<div class="page">
 
 <div class="container">
+    <!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="app-header">
+
+<button
+    class="admin-trigger-btn"
+    id="settingsBtn"
+>
+    ⚙ অ্যাডমিন
+</button>
 
 
-    <!-- =========================================
-         HEADER
-    ========================================== -->
+<div class="badge-top">
 
-    <header class="header">
+    <span></span>
 
-        <div class="badge">
+    DMRC • QUIZ ROUTINE 2026
 
-            <span class="badge-dot"></span>
-
-            DMRC • QUIZ ROUTINE 2026
-
-        </div>
+</div>
 
 
-        <h1 class="college-name">
-
-            ড. মাহবুবুর রহমান মোল্লা কলেজ
-
-        </h1>
-
-
-        <div class="exam-name">
-
-            কুইজ পরীক্ষা - ২০২৬
-
-        </div>
+<div
+    class="super-sub-header"
+    id="displaySuperSub"
+>
+    শ্রেণি: দ্বাদশ
+</div>
 
 
-        <div class="class-info">
-
-            শ্রেণি: দ্বাদশ
-
-        </div>
-
-    </header>
-
+<h1
+    class="college-title"
+    id="displayHeaderTitle"
+>
+    ড. মাহবুবুর রহমান মোল্লা কলেজ
+</h1>
 
 
-    <!-- =========================================
-         CONTENT
-    ========================================== -->
+<div
+    class="exam-title"
+    id="displaySubHeader"
+>
+    সাজেশন — ২০২৬
+</div>
 
-    <main class="content">
+
+<div
+    class="class-info"
+    id="displayClassInfo"
+>
+    পরীক্ষার্থী: বিজ্ঞান বিভাগ
+</div>
+
+<div class="scroll-hint" aria-hidden="true">
+    নিচে স্ক্রল করুন
+</div>
+
+</header>
 
 
-        <div class="section-title">
+<!-- NOTICE -->
 
-            <h2>
-                📚 পরীক্ষার বিষয়সমূহ
-            </h2>
+<div
+    id="noticeBanner"
+    class="notice-banner"
+>
+
+<strong>📢 নোটিশ:</strong>
+
+<span id="noticeTextContent"></span>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="content">
+
+
+<section class="subject-section">
+
+
+<div class="section-top">
+
+<div>
+
+<div class="section-title">
+    বিষয়ভিত্তিক সাজেশন
+</div>
+
+<div class="section-description">
+    একটি বিষয় নির্বাচন করে সেই বিষয়ের সাজেশন দেখুন
+</div>
+
+</div>
+
+
+<div
+    class="total-count"
+    id="totalCount"
+>
+    ০ টি সাজেশন
+</div>
+
+</div>
+
+
+<!-- SUBJECT TABS -->
+
+<div
+    class="subject-tabs"
+    id="subjectTabs"
+>
+
+<button
+    class="subject-tab active"
+    data-subject="all"
+>
+    সকল বিষয়
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SUGGESTIONS -->
+
+<div
+    id="suggestionContainer"
+    class="suggestion-list"
+>
+
+<div class="no-data">
+
+<div class="empty-icon">
+    ⏳
+</div>
+
+সাজেশন লোড হচ্ছে...
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div>
+    Developed by
+    <span class="dev-name">
+        JOHIRUL ISLAM SAGOR
+    </span>
+</div>
+
+<div class="details">
+    ROLL - 2042
+    •
+    SECTION - D
+    •
+    DMRC
+</div>
+
+<div class="copy">
+    © 2026 • DMRC QUIZ EXAMINATION
+</div>
+
+</footer>
+
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="passwordModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    অ্যাডমিন লগইন
+</div>
+
+
+<div class="form-group">
+
+<label>
+    অ্যাডমিন ইমেইল
+</label>
+
+<input
+    type="email"
+    id="adminEmailInput"
+    class="form-control"
+    placeholder="admin@gmail.com"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    পাসওয়ার্ড
+</label>
+
+<input
+    type="password"
+    id="adminPasswordInput"
+    class="form-control"
+    placeholder="পাসওয়ার্ড লিখুন..."
+>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="closeModals()"
+>
+    বাতিল
+</button>
+
+<button
+    class="btn btn-primary"
+    id="verifyPasswordBtn"
+>
+    লগইন করুন
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     SETTINGS MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="settingsMenuModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    অ্যাডমিন কন্ট্রোল প্যানেল
+</div>
+
+
+<div class="menu-options">
+
+<button
+    class="menu-option-btn"
+    onclick="openHeaderEditModal()"
+>
+    ১. হেডার কাস্টমাইজ করুন ✏️
+</button>
+
+
+<button
+    class="menu-option-btn"
+    onclick="openAddSuggestionModal()"
+>
+    ২. নতুন সাজেশন যোগ করুন ➕
+</button>
+
+
+<button
+    class="menu-option-btn"
+    onclick="openSubjectManager()"
+>
+    ৩. বিষয় ম্যানেজ করুন 📚
+</button>
+
+
+<button
+    class="menu-option-btn"
+    onclick="openNoticeModal()"
+>
+    ৪. নোটিশ ম্যানেজ করুন 📢
+</button>
+
+
+<button
+    class="menu-option-btn"
+    onclick="openDeleteModal()"
+>
+    ৫. সাজেশন ডিলিট করুন 🗑️
+</button>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="closeModals()"
+>
+    বন্ধ করুন
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     HEADER EDIT
+===================================================== -->
+
+<div
+    class="modal"
+    id="headerEditModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    হেডার কাস্টমাইজেশন
+</div>
+
+
+<div class="form-group">
+
+<label>
+    সুপার হেডার
+</label>
+
+<input
+    id="editSuperSub"
+    class="form-control"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    মূল হেডলাইন
+</label>
+
+<input
+    id="editHeaderTitle"
+    class="form-control"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    সাব হেডলাইন
+</label>
+
+<input
+    id="editSubHeader"
+    class="form-control"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    নিচের ইনফো
+</label>
+
+<input
+    id="editClassInfo"
+    class="form-control"
+>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="openSettingsMenu()"
+>
+    পেছনে
+</button>
+
+<button
+    class="btn btn-primary"
+    id="saveHeaderBtn"
+>
+    আপডেট করুন
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     ADD SUBJECT
+===================================================== -->
+
+<div
+    class="modal"
+    id="subjectManagerModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    বিষয় ম্যানেজার
+</div>
+
+
+<div class="form-group">
+
+<label>
+    নতুন বিষয়ের নাম
+</label>
+
+<input
+    id="newSubjectName"
+    class="form-control"
+    placeholder="যেমন: পদার্থবিজ্ঞান"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    বিষয়ের সংক্ষিপ্ত নাম / Code
+</label>
+
+<input
+    id="newSubjectCode"
+    class="form-control"
+    placeholder="যেমন: Physics"
+>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="openSettingsMenu()"
+>
+    পেছনে
+</button>
+
+<button
+    class="btn btn-primary"
+    id="saveSubjectBtn"
+>
+    বিষয় যোগ করুন
+</button>
+
+</div>
+
+
+<div
+    id="subjectManagerList"
+    style="margin-top:22px"
+>
+</div>
+
+</div>
+</div>
+<!-- =====================================================
+     ADD SUGGESTION
+===================================================== -->
+
+<div
+    class="modal"
+    id="addSuggestionModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    নতুন সাজেশন যোগ করুন
+</div>
+
+
+<!-- SUBJECT -->
+
+<div class="form-group">
+
+<label>
+    বিষয় নির্বাচন করুন *
+</label>
+
+<select
+    id="suggestionSubject"
+    class="form-control"
+>
+
+<option value="">
+    বিষয় নির্বাচন করুন
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    অথবা নতুন বিষয় লিখুন
+</label>
+
+<input
+    id="suggestionNewSubject"
+    class="form-control"
+    placeholder="যেমন: তথ্য ও যোগাযোগ প্রযুক্তি"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    টপ সেন্টার টেক্সট
+</label>
+
+<textarea
+    id="suggestionTopTitle"
+    class="form-control"
+    placeholder="সবচেয়ে বড় লেখা..."
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    টপ টেক্সট Alignment
+</label>
+
+<select
+    id="suggestionTopAlign"
+    class="form-control"
+>
+
+<option value="center">
+    Center
+</option>
+
+<option value="left">
+    Left
+</option>
+
+<option value="right">
+    Right
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    সুপার সাব হেড
+</label>
+
+<textarea
+    id="sugSuperSubField"
+    class="form-control"
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    সাব হেড
+</label>
+
+<textarea
+    id="sugSubHeadField"
+    class="form-control"
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    সাজেশন হেডলাইন
+</label>
+
+<textarea
+    id="suggestionHeadline"
+    class="form-control"
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    হেডলাইন Alignment
+</label>
+
+<select
+    id="suggestionHeadlineAlign"
+    class="form-control"
+>
+
+<option value="left">
+    Left
+</option>
+
+<option value="center">
+    Center
+</option>
+
+<option value="right">
+    Right
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    কনটেন্ট
+</label>
+
+<textarea
+    id="suggestionContent"
+    class="form-control"
+    placeholder="সাজেশনের বিস্তারিত..."
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    কনটেন্ট Alignment
+</label>
+
+<select
+    id="suggestionContentAlign"
+    class="form-control"
+>
+
+<option value="left">
+    Left
+</option>
+
+<option value="center">
+    Center
+</option>
+
+<option value="right">
+    Right
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    মান বণ্টন
+</label>
+
+<input
+    id="suggestionMarks"
+    class="form-control"
+    placeholder="যেমন: ৫ নম্বর"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    বাটন টেক্সট
+</label>
+
+<input
+    id="suggestionSigText"
+    class="form-control"
+    placeholder="যেমন: বিস্তারিত দেখুন"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    বাটন লিংক
+</label>
+
+<input
+    id="suggestionSigLink"
+    class="form-control"
+    placeholder="https://..."
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Box Width
+</label>
+
+<input
+    id="sugBoxWidth"
+    class="form-control"
+    value="100%"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Box Height
+</label>
+
+<input
+    id="sugBoxHeight"
+    class="form-control"
+    value="auto"
+>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="openSettingsMenu()"
+>
+    পেছনে
+</button>
+
+<button
+    class="btn btn-primary"
+    id="saveSuggestionBtn"
+>
+    সেভ করুন
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     NOTICE
+===================================================== -->
+
+<div
+    class="modal"
+    id="noticeModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    নোটিশ ম্যানেজ করুন
+</div>
+
+
+<div class="form-group">
+
+<label>
+    নোটিশ
+</label>
+
+<textarea
+    id="noticeInputText"
+    class="form-control"
+    placeholder="নোটিশ লিখুন..."
+></textarea>
+
+</div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="openSettingsMenu()"
+>
+    পেছনে
+</button>
+
+<button
+    class="btn btn-primary"
+    id="saveNoticeBtn"
+>
+    পাবলিশ করুন
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     DELETE
+===================================================== -->
+
+<div
+    class="modal"
+    id="deleteSuggestionModal"
+>
+
+<div class="modal-content">
+
+<div class="modal-title">
+    সাজেশন ম্যানেজ করুন
+</div>
+
+
+<div
+    id="deleteAllContainer"
+    style="display:none;margin-bottom:15px"
+>
+
+<button
+    class="btn btn-danger"
+    style="width:100%"
+    onclick="deleteAllSuggestions()"
+>
+    ⚠ সব সাজেশন ডিলিট
+</button>
+
+</div>
+
+
+<div id="deleteItemList"></div>
+
+
+<div class="btn-group">
+
+<button
+    class="btn btn-secondary"
+    onclick="openSettingsMenu()"
+>
+    পেছনে
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc,
+    getDoc,
+    setDoc
+}
+from
+"https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+import {
+    getAuth,
+    signInWithEmailAndPassword
+}
+from
+"https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig={
+
+    apiKey:
+    "AIzaSyDaNdM-tMKoC1ljHjj--TN9Yzqj2t68GK0",
+
+    authDomain:
+    "english-suggestion-1bbbe.firebaseapp.com",
+
+    projectId:
+    "english-suggestion-1bbbe",
+
+    storageBucket:
+    "english-suggestion-1bbbe.firebasestorage.app",
+
+    messagingSenderId:
+    "92971469167",
+
+    appId:
+    "1:92971469167:web:b97cddf414c617a287c09a",
+
+    measurementId:
+    "G-J4XK10K778"
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getFirestore(app);
+
+const auth =
+    getAuth(app);
+
+
+const $ =
+    id =>
+    document.getElementById(id);
+
+
+/* =====================================================
+   MODALS
+===================================================== */
+
+const modalIds=[
+
+    "passwordModal",
+    "settingsMenuModal",
+    "headerEditModal",
+    "subjectManagerModal",
+    "addSuggestionModal",
+    "noticeModal",
+    "deleteSuggestionModal"
+
+];
+
+
+window.closeModals=()=>{
+
+    modalIds.forEach(id=>{
+
+        const element=$(id);
+
+        if(element)
+            element.style.display="none";
+
+    });
+
+};
+
+
+window.openSettingsMenu=()=>{
+
+    closeModals();
+
+    $("settingsMenuModal")
+        .style.display="flex";
+
+};
+
+
+window.openHeaderEditModal=async()=>{
+
+    closeModals();
+
+    $("headerEditModal")
+        .style.display="flex";
+
+
+    try{
+
+        const snapshot=
+            await getDoc(
+                doc(
+                    db,
+                    "settings",
+                    "headerConfig"
+                )
+            );
+
+
+        const data=
+            snapshot.exists()
+            ? snapshot.data()
+            : {};
+
+
+        $("editSuperSub").value=
+            data.superSub ||
+            "শ্রেণি: দ্বাদশ";
+
+
+        $("editHeaderTitle").value=
+            data.headerTitle ||
+            "ড. মাহবুবুর রহমান মোল্লা কলেজ";
+
+
+        $("editSubHeader").value=
+            data.subHeader ||
+            "সাজেশন — ২০২৬";
+
+
+        $("editClassInfo").value=
+            data.classInfo ||
+            "পরীক্ষার্থী: বিজ্ঞান বিভাগ";
+
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+};
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+const settingsBtn=
+    $("settingsBtn");
+
+
+const urlParams=
+    new URLSearchParams(
+        location.search
+    );
+
+
+if(
+    urlParams.get("admin")
+    ===
+    "admin69"
+){
+
+    settingsBtn.style.display=
+        "block";
+
+}
+
+
+settingsBtn.addEventListener(
+    "click",
+    ()=>{
+
+        $("adminEmailInput").value="";
+        $("adminPasswordInput").value="";
+
+        closeModals();
+
+        $("passwordModal")
+            .style.display="flex";
+
+    }
+);
+
+
+$("verifyPasswordBtn")
+.addEventListener(
+    "click",
+    async()=>{
+
+        const email=
+            $("adminEmailInput")
+            .value
+            .trim();
+
+        const password=
+            $("adminPasswordInput")
+            .value;
+
+
+        if(
+            !email ||
+            !password
+        ){
+
+            alert(
+                "ইমেইল ও পাসওয়ার্ড দিন।"
+            );
+
+            return;
+
+        }
+
+
+        try{
+
+            await
+            signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+            openSettingsMenu();
+
+
+        }catch(error){
+
+            alert(
+                "লগইন ব্যর্থ: "
+                +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function applyTheme(){
+    /* একটাই থিম (ক্রিম) — CSS :root থেকেই আসে */
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+    return String(
+        value ?? ""
+    ).replace(
+        /[&<>"']/g,
+        char=>({
+
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+
+        }[char])
+    );
+
+}
+
+
+/* =====================================================
+   SUBJECT DATA
+===================================================== */
+
+let allSuggestions=[];
+
+let activeSubject="all";
+
+
+function getSubjects(){
+
+    const subjects=
+        allSuggestions
+        .map(item=>
+            String(
+                item.data.subject ||
+                "অন্যান্য"
+            ).trim()
+        )
+        .filter(Boolean);
+
+
+    return [
+        ...new Set(subjects)
+    ];
+
+}
+
+
+/* =====================================================
+   RENDER SUBJECT TABS
+===================================================== */
+
+function renderSubjectTabs(){
+
+    const tabs=
+        $("subjectTabs");
+
+
+    tabs.innerHTML="";
+
+
+    const allButton=
+        document.createElement("button");
+
+
+    allButton.className=
+        "subject-tab"
+        +
+        (
+            activeSubject==="all"
+            ? " active"
+            : ""
+        );
+
+
+    allButton.dataset.subject=
+        "all";
+
+
+    allButton.textContent=
+        "সকল বিষয়";
+
+
+    allButton.onclick=()=>{
+        activeSubject="all";
+        renderSubjectTabs();
+        renderSuggestions();
+    };
+
+
+    tabs.appendChild(
+        allButton
+    );
+
+
+    getSubjects()
+    .forEach(subject=>{
+
+        const button=
+            document.createElement(
+                "button"
+            );
+
+
+        button.className=
+            "subject-tab"
+            +
+            (
+                activeSubject===
+                subject
+                ? " active"
+                : ""
+            );
+
+
+        button.dataset.subject=
+            subject;
+
+
+        button.textContent=
+            subject;
+
+
+        button.onclick=()=>{
+
+            activeSubject=
+                subject;
+
+            renderSubjectTabs();
+
+            renderSuggestions();
+
+        };
+
+
+        tabs.appendChild(
+            button
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   RENDER SUGGESTIONS
+===================================================== */
+
+function renderSuggestions(){
+
+    const box=
+        $("suggestionContainer");
+
+
+    let filtered=
+        allSuggestions;
+
+
+    if(
+        activeSubject!=="all"
+    ){
+
+        filtered=
+            allSuggestions
+            .filter(item=>{
+
+                const subject=
+                    String(
+                        item.data.subject ||
+                        "অন্যান্য"
+                    ).trim();
+
+                return subject===
+                    activeSubject;
+
+            });
+
+    }
+
+
+    $("totalCount").textContent=
+        toBanglaNumber(
+            filtered.length
+        )
+        +
+        " টি সাজেশন";
+
+
+    if(
+        filtered.length===0
+    ){
+
+        box.innerHTML=`
+
+            <div class="no-data">
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                এই বিষয়ে এখনো কোনো সাজেশন যোগ করা হয়নি।
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    box.innerHTML="";
+
+
+    filtered.forEach(item=>{
+
+        const d=
+            item.data;
+
+
+        const card=
+            document.createElement(
+                "article"
+            );
+
+
+        card.className=
+            "suggestion-card";
+
+
+        if(d.boxWidth)
+            card.style.width=
+                d.boxWidth;
+
+
+        if(
+            d.boxHeight &&
+            d.boxHeight!=="auto"
+        ){
+
+            card.style.minHeight=
+                d.boxHeight;
+
+        }
+
+
+        const subject=
+            d.subject ||
+            "অন্যান্য";
+
+
+        let html="";
+
+
+        html+=`
+
+            <div class="card-subject">
+
+                ${escapeHtml(subject)}
+
+            </div>
+
+        `;
+
+
+        if(d.topTitle){
+
+            html+=`
+
+                <div
+                    class="card-top-title
+                    align-${safeAlign(
+                        d.topTitleAlign
+                    )}"
+                >
+
+                    ${escapeHtml(
+                        d.topTitle
+                    )}
+
+                </div>
+
+            `;
+
+        }
+
+
+        if(d.superSubField){
+
+            html+=`
+
+                <div
+                    class="card-super-sub
+                    align-${safeAlign(
+                        d.superSubAlign
+                    )}"
+                >
+
+                    ${escapeHtml(
+                        d.superSubField
+                    )}
+
+                </div>
+
+            `;
+
+        }
+
+
+        if(d.subHeadField){
+
+            html+=`
+
+                <div
+                    class="card-sub-head
+                    align-${safeAlign(
+                        d.subHeadAlign
+                    )}"
+                >
+
+                    ${escapeHtml(
+                        d.subHeadField
+                    )}
+
+                </div>
+
+            `;
+
+        }
+
+
+        if(d.headline){
+
+            html+=`
+
+                <h3
+                    class="align-${safeAlign(
+                        d.headlineAlign
+                    )}"
+                >
+
+                    ${escapeHtml(
+                        d.headline
+                    )}
+
+                </h3>
+
+            `;
+
+        }
+
+
+        if(
+            String(
+                d.content || ""
+            ).trim()
+        ){
+
+            html+=`
+
+                <div
+                    class="card-content-wrap"
+                >
+
+                    <p
+                        class="align-${safeAlign(
+                            d.contentAlign
+                        )}"
+                    >
+
+                        ${escapeHtml(
+                            d.content
+                        )}
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        if(
+            d.marks ||
+            d.sigText
+        ){
+
+            html+=`
+
+                <div
+                    class="card-meta-row"
+                >
+
+            `;
+
+
+            if(d.marks){
+
+                html+=`
+
+                    <div
+                        class="marks-badge"
+                    >
+
+                        ${escapeHtml(
+                            d.marks
+                        )}
+
+                    </div>
+
+                `;
+
+            }
+
+
+            if(d.sigText){
+
+                if(d.sigLink){
+
+                    html+=`
+
+                        <a
+                            href="${escapeHtml(
+                                d.sigLink
+                            )}"
+                            target="_blank"
+                            rel="noopener"
+                            class="signature-btn"
+                        >
+
+                            ${escapeHtml(
+                                d.sigText
+                            )}
+
+                            ↗
+
+                        </a>
+
+                    `;
+
+                }else{
+
+                    html+=`
+
+                        <div
+                            class="signature-btn"
+                        >
+
+                            ${escapeHtml(
+                                d.sigText
+                            )}
+
+                        </div>
+
+                    `;
+
+                }
+
+            }
+
+
+            html+=`
+                </div>
+            `;
+
+        }
+
+
+        card.innerHTML=
+            html;
+
+
+        box.appendChild(
+            card
+        );
+
+    });
+
+}
+
+
+function safeAlign(value){
+
+    return [
+        "left",
+        "center",
+        "right"
+    ].includes(value)
+    ? value
+    : "left";
+
+}
+
+
+function toBanglaNumber(number){
+
+    return String(number)
+        .replace(/0/g,"০")
+        .replace(/1/g,"১")
+        .replace(/2/g,"২")
+        .replace(/3/g,"৩")
+        .replace(/4/g,"৪")
+        .replace(/5/g,"৫")
+        .replace(/6/g,"৬")
+        .replace(/7/g,"৭")
+        .replace(/8/g,"৮")
+        .replace(/9/g,"৯");
+
+}
+
+
+/* =====================================================
+   LOAD ALL DATA
+===================================================== */
+    /* =====================================================
+   LOAD ALL DATA
+===================================================== */
+
+async function loadAppData(){
+
+    try{
+
+        const header=
+            await getDoc(
+                doc(
+                    db,
+                    "settings",
+                    "headerConfig"
+                )
+            );
+
+
+        if(header.exists()){
+
+            const d=
+                header.data();
+
+
+            $("displaySuperSub")
+                .innerText=
+                d.superSub ||
+                "শ্রেণি: দ্বাদশ";
+
+
+            $("displayHeaderTitle")
+                .innerText=
+                d.headerTitle ||
+                "ড. মাহবুবুর রহমান মোল্লা কলেজ";
+
+
+            $("displaySubHeader")
+                .innerText=
+                d.subHeader ||
+                "সাজেশন — ২০২৬";
+
+
+            $("displayClassInfo")
+                .innerText=
+                d.classInfo ||
+                "পরীক্ষার্থী: বিজ্ঞান বিভাগ";
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Header:",
+            error
+        );
+
+    }
+try{
+
+        const notice=
+            await getDoc(
+                doc(
+                    db,
+                    "settings",
+                    "noticeConfig"
+                )
+            );
+
+
+        const text=
+            notice.exists()
+            ? notice.data()
+                .noticeText || ""
+            : "";
+
+
+        if(text){
+
+            $("noticeTextContent")
+                .innerText=text;
+
+            $("noticeBanner")
+                .style.display=
+                "block";
+
+        }else{
+
+            $("noticeBanner")
+                .style.display=
+                "none";
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Notice:",
+            error
+        );
+
+    }
+
+
+    try{
+
+        const snapshot=
+            await getDocs(
+                collection(
+                    db,
+                    "suggestions"
+                )
+            );
+
+
+        allSuggestions=
+            snapshot.docs
+            .map(document=>({
+
+                id:
+                    document.id,
+
+                data:
+                    document.data()
+
+            }))
+            .sort((a,b)=>{
+
+                const x=
+                    a.data.createdAt
+                    ?.seconds || 0;
+
+                const y=
+                    b.data.createdAt
+                    ?.seconds || 0;
+
+                return x-y;
+
+            });
+
+
+        renderSubjectTabs();
+
+        renderSuggestions();
+
+
+    }catch(error){
+
+        console.error(
+            "Suggestions:",
+            error
+        );
+
+
+        $("suggestionContainer")
+            .innerHTML=`
+
+                <div class="no-data">
+
+                    সাজেশন লোড করতে সমস্যা হয়েছে।
+
+                </div>
+
+            `;
+
+    }
+
+}
+
+
+/* =====================================================
+   HEADER SAVE
+===================================================== */
+
+$("saveHeaderBtn")
+.addEventListener(
+    "click",
+    async()=>{
+
+        try{
+
+            await setDoc(
+
+                doc(
+                    db,
+                    "settings",
+                    "headerConfig"
+                ),
+
+                {
+
+                    superSub:
+                        $("editSuperSub")
+                        .value
+                        .trim(),
+
+                    headerTitle:
+                        $("editHeaderTitle")
+                        .value
+                        .trim(),
+
+                    subHeader:
+                        $("editSubHeader")
+                        .value
+                        .trim(),
+
+                    classInfo:
+                        $("editClassInfo")
+                        .value
+                        .trim()
+
+                }
+
+            );
+
+
+            alert(
+                "হেডার আপডেট হয়েছে!"
+            );
+
+
+            closeModals();
+
+            loadAppData();
+
+
+        }catch(error){
+
+            alert(
+                "আপডেট সমস্যা: "
+                +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   OPEN ADD SUGGESTION
+===================================================== */
+
+window.openAddSuggestionModal=async()=>{
+
+    closeModals();
+
+    $("addSuggestionModal")
+        .style.display="flex";
+
+
+    await loadSubjectSelect();
+
+};
+
+
+/* =====================================================
+   LOAD SUBJECT SELECT
+===================================================== */
+
+async function loadSubjectSelect(){
+
+    const select=
+        $("suggestionSubject");
+
+
+    select.innerHTML=`
+
+        <option value="">
+            বিষয় নির্বাচন করুন
+        </option>
+
+    `;
+
+
+    const subjects=
+        getSubjects();
+
+
+    subjects.forEach(subject=>{
+
+        const option=
+            document.createElement(
+                "option"
+            );
+
+        option.value=
+            subject;
+
+        option.textContent=
+            subject;
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   ADD SUGGESTION
+===================================================== */
+
+$("saveSuggestionBtn")
+.addEventListener(
+    "click",
+    async()=>{
+
+        let subject=
+            $("suggestionSubject")
+            .value
+            .trim();
+
+
+        const newSubject=
+            $("suggestionNewSubject")
+            .value
+            .trim();
+
+
+        if(newSubject){
+
+            subject=
+                newSubject;
+
+        }
+
+
+        if(!subject){
+
+            alert(
+                "একটি বিষয় নির্বাচন বা লিখুন।"
+            );
+
+            return;
+
+        }
+
+
+        try{
+
+            await addDoc(
+
+                collection(
+                    db,
+                    "suggestions"
+                ),
+
+                {
+
+                    subject:
+
+                        subject,
+
+                    topTitle:
+                        $("suggestionTopTitle")
+                        .value
+                        .trim(),
+
+                    topTitleAlign:
+                        $("suggestionTopAlign")
+                        .value,
+
+                    superSubField:
+                        $("sugSuperSubField")
+                        .value
+                        .trim(),
+
+                    superSubAlign:
+                        "right",
+
+                    subHeadField:
+                        $("sugSubHeadField")
+                        .value
+                        .trim(),
+
+                    subHeadAlign:
+                        "right",
+
+                    headline:
+                        $("suggestionHeadline")
+                        .value
+                        .trim(),
+
+                    headlineAlign:
+                        $("suggestionHeadlineAlign")
+                        .value,
+
+                    content:
+                        $("suggestionContent")
+                        .value
+                        .trim(),
+
+                    contentAlign:
+                        $("suggestionContentAlign")
+                        .value,
+
+                    marks:
+                        $("suggestionMarks")
+                        .value
+                        .trim(),
+
+                    sigText:
+                        $("suggestionSigText")
+                        .value
+                        .trim(),
+
+                    sigLink:
+                        $("suggestionSigLink")
+                        .value
+                        .trim(),
+
+                    boxWidth:
+                        $("sugBoxWidth")
+                        .value
+                        .trim()
+                        ||
+                        "100%",
+
+                    boxHeight:
+                        $("sugBoxHeight")
+                        .value
+                        .trim()
+                        ||
+                        "auto",
+
+                    createdAt:
+                        new Date()
+
+                }
+
+            );
+
+
+            alert(
+                "সাজেশন সফলভাবে যোগ হয়েছে!"
+            );
+
+
+            resetSuggestionForm();
+
+            closeModals();
+
+            await loadAppData();
+
+
+        }catch(error){
+
+            alert(
+                "সেভ সমস্যা: "
+                +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RESET FORM
+===================================================== */
+
+function resetSuggestionForm(){
+
+    document
+    .querySelectorAll(
+        "#addSuggestionModal input,"
+        +
+        "#addSuggestionModal textarea"
+    )
+    .forEach(
+        element=>
+            element.value=""
+    );
+
+
+    document
+    .querySelectorAll(
+        "#addSuggestionModal select"
+    )
+    .forEach(
+        element=>
+            element.selectedIndex=0
+    );
+
+
+    $("sugBoxWidth")
+        .value="100%";
+
+
+    $("sugBoxHeight")
+        .value="auto";
+
+}
+
+
+/* =====================================================
+   SUBJECT MANAGER
+===================================================== */
+
+window.openSubjectManager=async()=>{
+
+    closeModals();
+
+    $("subjectManagerModal")
+        .style.display="flex";
+
+
+    renderSubjectManager();
+
+};
+
+
+function renderSubjectManager(){
+
+    const list=
+        $("subjectManagerList");
+
+
+    const subjects=
+        getSubjects();
+
+
+    if(!subjects.length){
+
+        list.innerHTML=`
+
+            <div
+                style="
+                color:var(--muted);
+                text-align:center;
+                font-size:12px;
+                padding:15px;
+                "
+            >
+
+                এখনো কোনো বিষয় যোগ করা হয়নি।
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML=
+        `<div
+            style="
+            font-size:11px;
+            color:var(--muted);
+            margin-bottom:9px;
+            font-weight:700;
+            "
+        >
+            বর্তমান বিষয়সমূহ
+        </div>`;
+
+
+    subjects.forEach(subject=>{
+
+        const row=
+            document.createElement(
+                "div"
+            );
+
+
+        row.className=
+            "delete-item-row";
+
+
+        row.innerHTML=`
 
             <span>
-                Subject Routine
+                📚 ${escapeHtml(subject)}
             </span>
 
+        `;
+
+
+        list.appendChild(
+            row
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   SAVE NEW SUBJECT
+===================================================== */
+
+$("saveSubjectBtn")
+.addEventListener(
+    "click",
+    async()=>{
+
+        const name=
+            $("newSubjectName")
+            .value
+            .trim();
+
+
+        const code=
+            $("newSubjectCode")
+            .value
+            .trim();
+
+
+        if(!name){
+
+            alert(
+                "বিষয়ের নাম লিখুন।"
+            );
+
+            return;
+
+        }
+
+
+        try{
+
+            await setDoc(
+
+                doc(
+                    db,
+                    "subjects",
+                    name
+                ),
+
+                {
+
+                    name:name,
+
+                    code:
+                        code || name,
+
+                    createdAt:
+                        new Date()
+
+                }
+
+            );
+
+
+            alert(
+                "বিষয় যোগ হয়েছে!"
+            );
+
+
+            $("newSubjectName")
+                .value="";
+
+
+            $("newSubjectCode")
+                .value="";
+
+
+            await loadAppData();
+
+
+            renderSubjectManager();
+
+
+        }catch(error){
+
+            alert(
+                "বিষয় যোগ করতে সমস্যা: "
+                +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+window.openNoticeModal=async()=>{
+
+    closeModals();
+
+    $("noticeModal")
+        .style.display="flex";
+
+
+    try{
+
+        const snapshot=
+            await getDoc(
+                doc(
+                    db,
+                    "settings",
+                    "noticeConfig"
+                )
+            );
+
+
+        $("noticeInputText")
+            .value=
+            snapshot.exists()
+            ? snapshot.data()
+                .noticeText || ""
+            : "";
+
+    }catch(error){}
+
+};
+
+
+$("saveNoticeBtn")
+.addEventListener(
+    "click",
+    async()=>{
+
+        try{
+
+            await setDoc(
+
+                doc(
+                    db,
+                    "settings",
+                    "noticeConfig"
+                ),
+
+                {
+
+                    noticeText:
+                        $("noticeInputText")
+                        .value
+                        .trim()
+
+                }
+
+            );
+
+
+            alert(
+                "নোটিশ আপডেট হয়েছে!"
+            );
+
+
+            closeModals();
+
+            loadAppData();
+
+
+        }catch(error){
+
+            alert(
+                "নোটিশ সমস্যা: "
+                +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+window.openDeleteModal=async()=>{
+
+    closeModals();
+
+    $("deleteSuggestionModal")
+        .style.display="flex";
+
+
+    const list=
+        $("deleteItemList");
+
+
+    const all=
+        $("deleteAllContainer");
+
+
+    list.innerHTML=
+        `
+        <div class="no-data">
+            লোড হচ্ছে...
         </div>
+        `;
 
 
+    all.style.display="none";
 
-        <div class="subject-grid">
+
+    try{
+
+        const snapshot=
+            await getDocs(
+                collection(
+                    db,
+                    "suggestions"
+                )
+            );
 
 
-            <!-- 01 Physics -->
+        list.innerHTML="";
 
-            <a
-                href="physicsroutine.html"
-                class="subject-card"
-            >
 
-                <div class="card-top">
+        if(snapshot.empty){
 
-                    <div class="card-number">
-                        ০১
-                    </div>
-
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
-
+            list.innerHTML=
+                `
+                <div class="no-data">
+                    ডিলিট করার মতো কোনো সাজেশন নেই।
                 </div>
+                `;
 
+            return;
 
-                <div class="subject-name">
+        }
 
-                    পদার্থবিজ্ঞান ২য় পত্র
 
-                </div>
+        all.style.display=
+            "block";
 
 
-                <div class="card-bottom">
+        snapshot.docs
+        .forEach(
+            document=>{
 
-                    <span class="subject-code">
+                const data=
+                    document.data();
 
-                        কোড: ১৭৫
 
-                    </span>
+                const row=
+                    document.createElement(
+                        "div"
+                    );
 
-                    <span class="arrow">
-                        ↗
-                    </span>
 
-                </div>
+                row.className=
+                    "delete-item-row";
 
-            </a>
 
+                const span=
+                    document.createElement(
+                        "span"
+                    );
 
 
-            <!-- 02 Higher Math -->
+                span.textContent=
+                    (
+                        data.subject ||
+                        "অন্যান্য"
+                    )
+                    +
+                    " — "
+                    +
+                    (
+                        data.headline ||
+                        "সাজেশন"
+                    );
 
-            <a
-                href="higher-mathroutine.html"
-                class="subject-card"
-            >
 
-                <div class="card-top">
+                const button=
+                    document.createElement(
+                        "button"
+                    );
 
-                    <div class="card-number">
-                        ০২
-                    </div>
 
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
+                button.className=
+                    "btn btn-danger";
 
-                </div>
 
+                button.style.cssText=
+                    `
+                    padding:6px 10px;
+                    flex:none;
+                    font-size:10px;
+                    `;
 
-                <div class="subject-name">
 
-                    উচ্চতর গণিত ২য় পত্র
+                button.textContent=
+                    "ডিলিট";
 
-                </div>
 
+                button.onclick=
+                    ()=>deleteSuggestionItem(
+                        document.id
+                    );
 
-                <div class="card-bottom">
 
-                    <span class="subject-code">
+                row.append(
+                    span,
+                    button
+                );
 
-                        কোড: ২৬৬
 
-                    </span>
+                list.appendChild(
+                    row
+                );
 
-                    <span class="arrow">
-                        ↗
-                    </span>
+            }
+        );
 
-                </div>
 
-            </a>
+    }catch(error){
 
+        list.innerHTML=
+            `
+            <div class="no-data">
+                লোড করতে সমস্যা হয়েছে।
+            </div>
+            `;
 
- <!-- 03 Bangla -->
+    }
 
-            <a
-                href="banglaroutine.html"
-                class="subject-card"
-            >
+};
 
-                <div class="card-top">
 
-                    <div class="card-number">
-                      ০৩
-                    </div>
+window.deleteSuggestionItem=
+async id=>{
 
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
+    if(
+        !confirm(
+            "সাজেশনটি ডিলিট করতে চান?"
+        )
+    )
+        return;
 
-                </div>
 
+    try{
 
-                <div class="subject-name">
+        await deleteDoc(
+            doc(
+                db,
+                "suggestions",
+                id
+            )
+        );
 
-                    বাংলা ২য় পত্র
 
-                </div>
+        alert(
+            "সাজেশন ডিলিট হয়েছে!"
+        );
 
 
-                <div class="card-bottom">
+        await loadAppData();
 
-                    <span class="subject-code">
+        openDeleteModal();
 
-                        কোড: ১০২
 
-                    </span>
+    }catch(error){
 
-                    <span class="arrow">
-                        ↗
-                    </span>
+        alert(
+            "ডিলিট সমস্যা: "
+            +
+            error.message
+        );
 
-                </div>
+    }
 
-            </a>
+};
 
 
+window.deleteAllSuggestions=
+async()=>{
 
-            <!-- 04 ICT -->
+    if(
+        !confirm(
+            "সব সাজেশন ডিলিট করতে চান?"
+        )
+    )
+        return;
 
-            <a
-                href="ictroutine.html"
-                class="subject-card"
-            >
 
-                <div class="card-top">
+    try{
 
-                    <div class="card-number">
-                        ০৪
-                    </div>
+        const snapshot=
+            await getDocs(
+                collection(
+                    db,
+                    "suggestions"
+                )
+            );
 
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
 
-                </div>
+        await Promise.all(
 
+            snapshot.docs.map(
+                item=>
+                    deleteDoc(
+                        doc(
+                            db,
+                            "suggestions",
+                            item.id
+                        )
+                    )
+            )
 
-                <div class="subject-name">
+        );
 
-                    তথ্য ও যোগাযোগ প্রযুক্তি
 
-                </div>
+        alert(
+            "সব সাজেশন ডিলিট হয়েছে!"
+        );
 
 
-                <div class="card-bottom">
+        await loadAppData();
 
-                    <span class="subject-code">
+        openDeleteModal();
 
-                        কোড: ২৭৫
 
-                    </span>
+    }catch(error){
 
-                    <span class="arrow">
-                        ↗
-                    </span>
+        alert(
+            "সমস্যা হয়েছে: "
+            +
+            error.message
+        );
 
-                </div>
+    }
 
-            </a>
+};
 
 
+/* =====================================================
+   CLOSE MODAL WHEN CLICK OUTSIDE
+===================================================== */
 
-            <!-- 09 English -->
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
 
-            <a
-                href="englishroutine.html"
-                class="subject-card"
-            >
+    modal.addEventListener(
+        "click",
+        event=>{
 
-                <div class="card-top">
+            if(
+                event.target===
+                modal
+            ){
 
-                    <div class="card-number">
-                        ০৫
-                    </div>
+                modal.style.display=
+                    "none";
 
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
+            }
 
-                </div>
+        }
+    );
 
+});
 
-                <div class="subject-name">
 
-                    ইংরেজি ২য় পত্র
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
 
-                </div>
+loadAppData();
 
-
-                <div class="card-bottom">
-
-                    <span class="subject-code">
-
-                        কোড: ১০৮
-
-                    </span>
-
-                    <span class="arrow">
-                        ↗
-                    </span>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 10 Chemistry -->
-
-            <a
-                href="chemistryroutine.html"
-                class="subject-card"
-            >
-
-                <div class="card-top">
-
-                    <div class="card-number">
-                        ০৬
-                    </div>
-
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
-
-                </div>
-
-
-                <div class="subject-name">
-
-                    রসায়ন ২য় পত্র
-
-                </div>
-
-
-                <div class="card-bottom">
-
-                    <span class="subject-code">
-
-                        কোড: ১৭৭
-
-                    </span>
-
-                    <span class="arrow">
-                        ↗
-                    </span>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- 11 Biology -->
-
-            <a
-                href="biologyroutine.html"
-                class="subject-card"
-            >
-
-                <div class="card-top">
-
-                    <div class="card-number">
-                        ০৭
-                    </div>
-
-                    <div class="quiz-label">
-                        QUIZ
-                    </div>
-
-                </div>
-
-
-                <div class="subject-name">
-
-                    জীববিজ্ঞান ২য় পত্র
-
-                </div>
-
-
-                <div class="card-bottom">
-
-                    <span class="subject-code">
-
-                        কোড: ১৭৯
-
-                    </span>
-
- 
-                    <span class="arrow">
-                        ↗
-                    </span>
-
-                </div>
-
-            </a>
-
-
-
-        </div>
-
-    </main>
-
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <footer class="footer">
-
-        Developed by
-        <strong>
-            JOHIRUL ISLAM SAGOR
-        </strong>
-
-        <br>
-
-        <span class="roll">
-
-            ROLL - 2042
-            &nbsp; • &nbsp;
-            SECTION - D
-            &nbsp; • &nbsp;
-            DMRC
-            
-    
-
-        </span>
-<div class="copyright">
-© 2026 • DMRC QUIZ EXAMINATION
-</div>
-    </footer>
-
-
-</div>
-
+</script>
 
 </body>
 </html>
